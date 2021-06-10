@@ -26,7 +26,6 @@ function buttonClick(e, x, y){
     }
     e.target.disabled = true;
     validateWinner();
-    winnerAlert();
 }
 
 function resetApp(){
@@ -82,7 +81,7 @@ function validateWinner(){
         }
     }
     if(hasWon){
-        window.confirm("Congratulations, you´ve WON!");
+        alert("Congratulations, you´ve WON!");
     }    
 }
 
