@@ -4,24 +4,32 @@
 }
 
 .row button{    
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
+    font-size: 75px;
+    font-style: italic;
+    color: red;
 }
 
-.row .reset{
-    font-size: larger;
-    height: 50px;
-    width: 140px;
+.row button:hover{
+    
+}
+
+.row .restart{
+    font-size: 50px;
+    height: 85px;
+    width: 225px;
     margin-top: 10px;
+    color: lightgreen;
 }
 
-.reset:hover{
-    background: lightgreen;
+.restart:hover{
+    background: black;
 }
 .game{
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -150px;
-    margin-left: -150px;
+    margin-top: -250px;
+    margin-left: -250px;
 }
