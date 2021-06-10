@@ -26,21 +26,19 @@ function buttonClick(e, x, y){
     }
     e.target.disabled = true;
     validateWinner();
-    
+    winnerAlert();
 }
 
-function reset(){
+function resetApp(){
     window.location.reload();
-}
-
-function winnerPrompt(){
-    //TODO - declare winner popup
-    window.prompt("You´ve won!")
+    buttonClick();
 }
 
 function validateWinner(){
+
     for(var i = 0; i < playField.length; i++)
     {
+        var hasWon = false;
         var b = document.getElementsByClassName("gamebtn");
 
         //determine if column or row has won
@@ -49,6 +47,7 @@ function validateWinner(){
             for(var i = 0; i < b.length; i++)
             {
                 b[i].disabled = true;
+                hasWon = true;
             }
         }
 
@@ -58,6 +57,7 @@ function validateWinner(){
             for(var i = 0; i < b.length; i++)
             {
                 b[i].disabled = true;
+                hasWon = true;
             }
         }
 
@@ -67,6 +67,7 @@ function validateWinner(){
             for(var i = 0; i < b.length; i++)
             {
                 b[i].disabled = true;
+                hasWon = true;
             }
         }
 
@@ -76,8 +77,12 @@ function validateWinner(){
             for(var i = 0; i < b.length; i++)
             {
                 b[i].disabled = true;
+                hasWon = true;
             }
         }
     }
+    if(hasWon){
+        window.confirm("Congratulations, you´ve WON!");
+    }    
 }
 
