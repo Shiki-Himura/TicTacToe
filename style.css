@@ -1,0 +1,27 @@
+
+.row .color{
+    background-color: whitesmoke;
+}
+
+.row button{    
+    height: 100px;
+    width: 100px;
+}
+
+.row .reset{
+    font-size: larger;
+    height: 50px;
+    width: 140px;
+    margin-top: 10px;
+}
+
+.reset:hover{
+    background: lightgreen;
+}
+.game{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px;
+}

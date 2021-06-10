@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link href="./style.css" rel="stylesheet">
+
+        <title>TicTacToe</title>
+
+    </head>
+    <body>
+        <div class="container game">
+            <div class="row">
+                <button class="gamebtn color" onclick="buttonClick(event, 0,0)"></button>
+                <button class="gamebtn color" onclick="buttonClick(event, 0,1)"></button>
+                <button class="gamebtn color" onclick="buttonClick(event, 0,2)"></button>
+            </div>
+            <div class="row">
+                <button class="gamebtn color" onclick="buttonClick(event, 1,0)"></button>
+                <button class="gamebtn color" onclick="buttonClick(event, 1,1)"></button>
+                <button class="gamebtn color" onclick="buttonClick(event, 1,2)"></button>
+            </div>
+            <div class="row">
+                <button class="gamebtn color" onclick="buttonClick(event, 2,0)"></button>
+                <button class="gamebtn color" onclick="buttonClick(event, 2,1)"></button>
+                <button class="gamebtn color" onclick="buttonClick(event, 2,2)"></button>
+            </div>
+            <!--create button to reset the app-->
+            <div class="row">
+                <button class="reset" onclick="reset()">Restart</button>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+    </body>    
+</html>
