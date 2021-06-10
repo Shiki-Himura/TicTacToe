@@ -5,7 +5,6 @@ var playField = [
 ]
 
 var playerOne = true;
-var hasWon = false;
 
 function buttonClick(e, x, y){
     console.log(e);
