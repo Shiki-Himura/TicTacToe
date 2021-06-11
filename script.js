@@ -8,7 +8,8 @@ var playerOne = true;
 
 function buttonClick(e, x, y){
     console.log(e);
-    console.log(x,y);    
+    console.log(x,y);
+    
 
     if(playerOne)
     {
