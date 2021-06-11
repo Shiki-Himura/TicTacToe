@@ -37,7 +37,7 @@ function validateWinner(){
 
     for(var i = 0; i < playField.length; i++)
     {
-        var hasWon = null;
+        var hasWon = false;
         var b = document.getElementsByClassName("gamebtn");
 
         //determine if column or row has won

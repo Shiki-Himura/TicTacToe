@@ -1,14 +1,31 @@
 var field = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0]
+    [0,0,0],
+    [0,0,0],
+    [0,0,0]
 ]
 
 var player_one = true;
 
+function buttonClick(e, x, y)
+{
+    console.log(e);
+    console.log(x,y);
+    
 
+    
+    e.target.textContent = "X";
+    e.target.disabled = true;
+    field[x][y] = 1;
+    player_one = false;
 
-function validate(tmp_field){
+    bestMove(field, player_one);
+    player_one = true;
+
+    validate(field);
+}
+
+function validate(tmp_field)
+{
     for(var i = 0; i < 3; i++)
     {
         if(tmp_field[i][0] != 0 && equals3(tmp_field[i][0], tmp_field[i][1], tmp_field[i][2])
@@ -17,14 +34,16 @@ function validate(tmp_field){
             return 1;
         }
 
-        if(tmp_field[0][0] != 0 && equals3(tmp_field[0][0], tmp_field[1][1], tmp_field[2][2])
-        || tmp_field[0][2] != 0 && equals3(tmp_field[0][2], tmp_field[1][1], tmp_field[2][0]))
-        {
-            return 1;
-        }
     }
 
+    if(tmp_field[0][0] != 0 && equals3(tmp_field[0][0], tmp_field[1][1], tmp_field[2][2])
+    || tmp_field[0][2] != 0 && equals3(tmp_field[0][2], tmp_field[1][1], tmp_field[2][0]))
+    {
+        return 1;
+    }
+    
     var empty_field = false;
+
     for(var i = 0; i < 3; i++)
     {
         for(var j = 0; j < 3; j++)
@@ -32,11 +51,11 @@ function validate(tmp_field){
             if(tmp_field[i][j] == 0)
             {
                 empty_field = true;
-            }   
+            }
         }
     }
 
-    if(empty_field)
+    if(empty_field == false)
     {
         return 0;
     }
@@ -54,7 +73,7 @@ function equals3(one, two, three)
 
 function bestMove(tmp_field, player)
 {
-    var bestScore;
+    var bestScore = Infinity;
     var move = {  };
 
     for(var i = 0; i < 3; i++)
@@ -64,8 +83,8 @@ function bestMove(tmp_field, player)
             if(tmp_field[i][j] == 0)
             {
                 tmp_field[i][j] = 2;
-                var score = miniMax(tmp_field, player);
-                if(score > bestScore)
+                var score = miniMax(tmp_field, true);
+                if(score < bestScore)
                 {
                     bestScore = score;
                     move = { i,j }
@@ -76,6 +95,10 @@ function bestMove(tmp_field, player)
     }
 
     tmp_field[move.i][move.j] = 2;
+
+    var b = document.getElementsByClassName("gamebtn");
+    console.log(tmp_field);
+    console.log(b);
 }
 
 function miniMax(tmp_field, player)
@@ -83,27 +106,14 @@ function miniMax(tmp_field, player)
     var bestScore;
     var game_over = validate(tmp_field);
     
-    if(player && game_over != 0)
+    if(game_over != 2)
     {
-        if(game_over == 1)
-        {
-            return 10;
-        }
+        if(player == true && game_over != 0)
+            return -10
+        else if(game_over != 0)
+            return 10
         else
-        {
-            return 0;
-        }
-    }
-    else if(game_over != 0)
-    {
-        if(game_over == 1)
-        {
-            return -10;
-        }
-        else
-        {
-            return 0;
-        }
+            return 0
     }
 
     if(player)
@@ -131,7 +141,7 @@ function miniMax(tmp_field, player)
     }
     else
     {
-        bestScore = +Infinity;
+        bestScore = Infinity;
         for(var i = 0; i < 3; i++)
         {
             for(var j = 0; j < 3; j++)
@@ -140,7 +150,7 @@ function miniMax(tmp_field, player)
                 {
                     tmp_field[i][j] = 2;
                     var score = miniMax(tmp_field, true);
-
+                    
                     if(score < bestScore)
                     {
                         bestScore = score;
@@ -152,6 +162,8 @@ function miniMax(tmp_field, player)
 
         return bestScore;
     }
+}
 
-
+function resetApp(){
+    window.location.reload();
 }
