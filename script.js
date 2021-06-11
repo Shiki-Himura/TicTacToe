@@ -31,14 +31,13 @@ function buttonClick(e, x, y){
 
 function resetApp(){
     window.location.reload();
-    buttonClick();
 }
 
 function validateWinner(){
 
     for(var i = 0; i < playField.length; i++)
     {
-        var hasWon = false;
+        var hasWon = null;
         var b = document.getElementsByClassName("gamebtn");
 
         //determine if column or row has won
@@ -83,6 +82,6 @@ function validateWinner(){
     }
     if(hasWon){
         alert("Congratulations, you´ve WON!");
-    }    
+    }
 }
 
