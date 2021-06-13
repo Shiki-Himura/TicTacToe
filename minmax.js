@@ -83,6 +83,7 @@ function bestMove(tmp_field, player)
             if(tmp_field[i][j] == 0)
             {
                 tmp_field[i][j] = 2;
+
                 var score = miniMax(tmp_field, true);
                 if(score < bestScore)
                 {
@@ -169,8 +170,8 @@ function resetApp(){
 }
 
 //implement concat to get 1d array
-var newArr = [];
+/*var newArr = [];
 for(var i = 0; i < field.length; i++)
 {
     newArr = newArr.concat(field[i]);
-}
+}*/
