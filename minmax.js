@@ -94,7 +94,7 @@ function bestMove(tmp_field, player)
         }
     }
 
-    tmp_field[move.i][move.j] = 2;
+    tmp_field[move.i][move.j] = 2;    
 
     var b = document.getElementsByClassName("gamebtn");
     console.log(tmp_field);
@@ -166,4 +166,11 @@ function miniMax(tmp_field, player)
 
 function resetApp(){
     window.location.reload();
+}
+
+//implement concat to get 1d array
+var newArr = [];
+for(var i = 0; i < field.length; i++)
+{
+    newArr = newArr.concat(field[i]);
 }
