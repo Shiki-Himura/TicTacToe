@@ -18,43 +18,33 @@ function buttonClick(e, x, y)
     player_one = false;
 
     bestMove(field);
-    //render(field);
+    render(field);
     validate(field);
     winnerAlert(field);
 }
 
-/*function render(tmp_field)
+function render(tmp_field)
 {
     //implement concat to get 1d array
-    var bestScore = +Infinity;
-    var move = [];
     var newArr = [];
 
     for(var i = 0; i < tmp_field.length; i++)
     {
         newArr = newArr.concat(tmp_field[i]);
+    }
 
-        for(var i = 0; i < newArr.length; i++)
+    var b = document.getElementsByClassName("gamebtn");
+    for(var i = 0; i < newArr.length; i++)
+    {
+        if(newArr[i] != 0 && newArr[i] == 2)
         {
-            if(newArr[i] == 0)
-            {
-                newArr[i] = 2;
-
-                var score = miniMax(tmp_field, true);
-                if(score < bestScore)
-                {
-                    bestScore = score;
-                    move = newArr[i]; 
-                }
-                tmp_field[i] = 0;
-            }
+            b[i].textContent = "O";
         }
     }
-    tmp_field[move] = 2;
-    var b = document.getElementsByClassName("gamebtn");
+
     console.log(tmp_field);
     console.log(b);
-}*/
+}
 
 
 function validate(tmp_field)
