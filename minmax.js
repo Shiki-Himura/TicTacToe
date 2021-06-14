@@ -4,6 +4,13 @@ var field = [
     [0,0,0]
 ]
 
+//implement concat to get 1d array
+/*var newArr = [];
+for(var i = 0; i < field.length; i++)
+{
+    newArr = newArr.concat(field[i]);
+}*/
+
 var player_one = true;
 
 function buttonClick(e, x, y)
@@ -12,7 +19,7 @@ function buttonClick(e, x, y)
     console.log(x,y);
     
 
-    
+    //replace with 1d array function
     e.target.textContent = "X";
     e.target.disabled = true;
     field[x][y] = 1;
@@ -169,9 +176,3 @@ function resetApp(){
     window.location.reload();
 }
 
-//implement concat to get 1d array
-/*var newArr = [];
-for(var i = 0; i < field.length; i++)
-{
-    newArr = newArr.concat(field[i]);
-}*/
