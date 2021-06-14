@@ -11,7 +11,6 @@ function buttonClick(e, x, y)
     console.log(e);
     console.log(x,y);    
 
-    //replace with 1d array function
     e.target.textContent = "X";
     e.target.disabled = true;
     field[x][y] = 1;
@@ -44,7 +43,6 @@ function render(tmp_field)
     console.log(tmp_field);
     console.log(b);
 }
-
 
 function validate(tmp_field)
 {
