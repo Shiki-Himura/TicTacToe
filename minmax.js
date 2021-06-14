@@ -29,6 +29,7 @@ function buttonClick(e, x, y)
     player_one = true;
 
     validate(field);
+    getWinner(field);
 }
 
 function validate(tmp_field)
@@ -40,7 +41,6 @@ function validate(tmp_field)
         {
             return 1;
         }
-
     }
 
     if(tmp_field[0][0] != 0 && equals3(tmp_field[0][0], tmp_field[1][1], tmp_field[2][2])
@@ -70,7 +70,6 @@ function validate(tmp_field)
     {
         return 2;
     }
-
 }
 
 function equals3(one, two, three)
@@ -172,7 +171,16 @@ function miniMax(tmp_field, player)
     }
 }
 
-function resetApp(){
+function resetApp()
+{
     window.location.reload();
+}
+
+function getWinner(field)
+{
+    if(validate(field) == 1)
+    {
+        alert("You´ve Won!");
+    }
 }
 
