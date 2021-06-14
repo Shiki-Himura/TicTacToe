@@ -25,7 +25,6 @@ function buttonClick(e, x, y)
 
 function render(tmp_field)
 {
-    //implement concat to get 1d array
     var newArr = [];
 
     for(var i = 0; i < tmp_field.length; i++)
