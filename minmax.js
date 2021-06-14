@@ -9,8 +9,7 @@ var player_one = true;
 function buttonClick(e, x, y)
 {
     console.log(e);
-    console.log(x,y);
-    
+    console.log(x,y);    
 
     //replace with 1d array function
     e.target.textContent = "X";
@@ -18,22 +17,43 @@ function buttonClick(e, x, y)
     field[x][y] = 1;
     player_one = false;
 
-    bestMove(field, player_one);
-    player_one = true;
-
+    bestMove(field);
+    //render(field);
     validate(field);
-    getWinner(field);
+    winnerAlert(field);
 }
 
-/*function render()
+/*function render(tmp_field)
 {
     //implement concat to get 1d array
+    var bestScore = +Infinity;
+    var move = [];
     var newArr = [];
-    for(var i = 0; i < field.length; i++)
+
+    for(var i = 0; i < tmp_field.length; i++)
     {
-        newArr = newArr.concat(field[i]);
+        newArr = newArr.concat(tmp_field[i]);
+
+        for(var i = 0; i < newArr.length; i++)
+        {
+            if(newArr[i] == 0)
+            {
+                newArr[i] = 2;
+
+                var score = miniMax(tmp_field, true);
+                if(score < bestScore)
+                {
+                    bestScore = score;
+                    move = newArr[i]; 
+                }
+                tmp_field[i] = 0;
+            }
+        }
     }
-    return newArr;
+    tmp_field[move] = 2;
+    var b = document.getElementsByClassName("gamebtn");
+    console.log(tmp_field);
+    console.log(b);
 }*/
 
 
@@ -82,9 +102,9 @@ function equals3(one, two, three)
     return one == two && one == three;
 }
 
-function bestMove(tmp_field, player)
+function bestMove(tmp_field)
 {
-    var bestScore = Infinity;
+    var bestScore = +Infinity;
     var move = {  };
 
     for(var i = 0; i < 3; i++)
@@ -128,7 +148,7 @@ function miniMax(tmp_field, player)
             return 0
     }
 
-    if(player)
+    if(player == true)
     {
         bestScore = -Infinity;
         for(var i = 0; i < 3; i++)
@@ -148,12 +168,11 @@ function miniMax(tmp_field, player)
                 }
             }
         }
-
         return bestScore;
     }
     else
     {
-        bestScore = Infinity;
+        bestScore = +Infinity;
         for(var i = 0; i < 3; i++)
         {
             for(var j = 0; j < 3; j++)
@@ -181,7 +200,7 @@ function resetApp()
     window.location.reload();
 }
 
-function getWinner(field)
+function winnerAlert(field)
 {
     if(validate(field) == 1)
     {
