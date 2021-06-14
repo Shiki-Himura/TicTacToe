@@ -20,7 +20,7 @@
 }
 
 .restart:hover{
-    background: black;
+    background: lightgray;
 }
 .game{
     position: absolute;
