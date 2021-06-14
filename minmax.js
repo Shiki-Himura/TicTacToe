@@ -4,13 +4,6 @@ var field = [
     [0,0,0]
 ]
 
-//implement concat to get 1d array
-/*var newArr = [];
-for(var i = 0; i < field.length; i++)
-{
-    newArr = newArr.concat(field[i]);
-}*/
-
 var player_one = true;
 
 function buttonClick(e, x, y)
@@ -31,6 +24,18 @@ function buttonClick(e, x, y)
     validate(field);
     getWinner(field);
 }
+
+/*function render()
+{
+    //implement concat to get 1d array
+    var newArr = [];
+    for(var i = 0; i < field.length; i++)
+    {
+        newArr = newArr.concat(field[i]);
+    }
+    return newArr;
+}*/
+
 
 function validate(tmp_field)
 {
