@@ -4,8 +4,6 @@ var field = [
     [0,0,0]
 ]
 
-console.log(getRandomIndex(field));
-
 function buttonClick(e, x, y)
 {
     console.log(e);
@@ -26,11 +24,10 @@ function buttonClick(e, x, y)
 function getRandomIndex(field)
 {
     var array = getPossibleMoves(field);
-
     min = 0;
-    max = array.length;
+    max = array.length - 1;
 
-    return getRandomNumber(min, max);
+    return array[getRandomNumber(min, max)];
 }
 
 function getPossibleMoves(field)
@@ -49,8 +46,6 @@ function getPossibleMoves(field)
     }
     return possible;
 }
-
-
 
 function getRandomNumber(min, max)
 {
@@ -128,6 +123,7 @@ function bestMove(tmp_field)
 {
     var bestScore = +Infinity
     var move = {  };
+    var rndNum = getRandomNumber(0, 9);
 
     for(var i = 0; i < 3; i++)
     {
@@ -147,8 +143,17 @@ function bestMove(tmp_field)
             }
         }
     }
-
-    tmp_field[move.i][move.j] = 2;
+    
+    if(rndNum < 2)
+    {
+        var rndMove = getRandomIndex(tmp_field);
+        tmp_field[rndMove.i][rndMove.j] = 2;
+    }
+    else
+    {
+        tmp_field[move.i][move.j] = 2;
+    }
+    
 
     var b = document.getElementsByClassName("gamebtn");
     console.log(tmp_field);
