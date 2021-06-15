@@ -4,7 +4,7 @@ var field = [
     [0,0,0]
 ]
 
-
+console.log(getRandomIndex(field));
 
 function buttonClick(e, x, y)
 {
@@ -15,7 +15,7 @@ function buttonClick(e, x, y)
     e.target.textContent = "X";
     e.target.disabled = true;
     field[x][y] = 1;
-    player_one = false;
+    player_one = false;    
 
     bestMove(field);
     render(field);
@@ -23,7 +23,36 @@ function buttonClick(e, x, y)
     winnerAlert(field);
 }
 
-function getRandom(min, max)
+function getRandomIndex(field)
+{
+    var array = getPossibleMoves(field);
+
+    min = 0;
+    max = array.length;
+
+    return getRandomNumber(min, max);
+}
+
+function getPossibleMoves(field)
+{
+    var possible = [];
+
+    for(var i = 0; i < 3; i++)
+    {
+        for(var j = 0; j < 3; j++)
+        {
+            if(field[i][j] == 0)
+            {
+               possible.push({i,j});
+            }
+        }
+    }
+    return possible;
+}
+
+
+
+function getRandomNumber(min, max)
 {
     return Math.floor(Math.random() * (max-min)) + min;
 }
@@ -200,4 +229,6 @@ function winnerAlert(field)
         alert("You´ve Won!");
     }
 }
+
+
 
