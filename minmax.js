@@ -4,13 +4,14 @@ var field = [
     [0,0,0]
 ]
 
-var player_one = true;
+
 
 function buttonClick(e, x, y)
 {
     console.log(e);
     console.log(x,y);    
 
+    var player_one = true;
     e.target.textContent = "X";
     e.target.disabled = true;
     field[x][y] = 1;
@@ -20,6 +21,11 @@ function buttonClick(e, x, y)
     render(field);
     validate(field);
     winnerAlert(field);
+}
+
+function getRandom(min, max)
+{
+    return Math.floor(Math.random() * (max-min)) + min;
 }
 
 function render(tmp_field)
@@ -91,7 +97,7 @@ function equals3(one, two, three)
 
 function bestMove(tmp_field)
 {
-    var bestScore = +Infinity;
+    var bestScore = +Infinity
     var move = {  };
 
     for(var i = 0; i < 3; i++)
@@ -113,7 +119,7 @@ function bestMove(tmp_field)
         }
     }
 
-    tmp_field[move.i][move.j] = 2;    
+    tmp_field[move.i][move.j] = 2;
 
     var b = document.getElementsByClassName("gamebtn");
     console.log(tmp_field);
@@ -159,7 +165,7 @@ function miniMax(tmp_field, player)
     }
     else
     {
-        bestScore = +Infinity;
+        bestScore = +Infinity
         for(var i = 0; i < 3; i++)
         {
             for(var j = 0; j < 3; j++)
