@@ -67,6 +67,7 @@ function render(tmp_field)
         if(newArr[i] != 0 && newArr[i] == 2)
         {
             b[i].textContent = "O";
+            b[i].disabled = true;
         }
     }
 
@@ -143,7 +144,7 @@ function bestMove(tmp_field)
             }
         }
     }
-    
+    //implement difficulty
     if(rndNum < 2)
     {
         var rndMove = getRandomIndex(tmp_field);
@@ -153,11 +154,6 @@ function bestMove(tmp_field)
     {
         tmp_field[move.i][move.j] = 2;
     }
-    
-
-    var b = document.getElementsByClassName("gamebtn");
-    console.log(tmp_field);
-    console.log(b);
 }
 
 function miniMax(tmp_field, player)
