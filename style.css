@@ -5,8 +5,11 @@ h1{
     font-size: 80px;
 }
 
-.diffbtn1{
+.difficulty{
     visibility: visible;
+}
+
+.diffbtn1{
     position: absolute;
     top: 50%;
     left: 55%;
@@ -21,7 +24,6 @@ h1{
 }
 
 .diffbtn2{
-    visibility: visible;
     position: absolute;
     top: 50%;
     left: 70%;

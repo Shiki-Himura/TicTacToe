@@ -4,26 +4,11 @@ var field = [
     [0,0,0]
 ]
 
-function getDifficulty()
-{
-    var diff = document.getElementsByClassName("diffbtn");
-    var game = document.getElementsByClassName("game");
-    for(var i = 0; i < diff.length; i++)
-    {
-        diff[i].style.visibility = "hidden";
-    }
-    for(var i = 0; i < game.length; i++)
-    {
-        game[i].style.visibility = "visible";
-    }
-}
+var difficulty;
 
-function setDifficulty(button)
+function setDifficulty(diff)
 {
-    if(button == 2)
-        return getRandomNumber(0,9);
-    else
-        return getRandomNumber(0,1);
+    difficulty = diff;
 }
 
 function buttonClick(e, x, y)
@@ -40,13 +25,102 @@ function buttonClick(e, x, y)
     winnerAlert(field);
 }
 
-function getRandomIndex(field)
+function bestMove(tmp_field)
 {
-    var array = getPossibleMoves(field);
-    min = 0;
-    max = array.length - 1;
+    var rnd = getRandomNumber(0,100);
+    var bestScore = +Infinity
+    var move = {  };
 
-    return array[getRandomNumber(min, max)];
+    for(var i = 0; i < 3; i++)
+    {
+        for(var j = 0; j < 3; j++)
+        {
+            if(tmp_field[i][j] == 0)
+            {
+                tmp_field[i][j] = 2;
+
+                var score = miniMax(tmp_field, true);
+                if(score < bestScore)
+                {
+                    bestScore = score;
+                    move = { i,j }
+                }
+                tmp_field[i][j] = 0;
+            }
+        }
+    }
+
+    if(rnd < difficulty)
+    {
+        var rndMove = getRandomIndex(tmp_field);
+        tmp_field[rndMove.i][rndMove.j] = 2;
+    }
+    else
+    {
+        tmp_field[move.i][move.j] = 2;
+    }
+}
+
+function miniMax(tmp_field, player)
+{
+    var bestScore;
+    var game_over = validate(tmp_field);
+    
+    if(game_over != 2)
+    {
+        if(player == true && game_over != 0)
+            return -10
+        else if(game_over != 0)
+            return 10
+        else
+            return 0
+    }
+
+    if(player == true)
+    {
+        bestScore = -Infinity;
+        for(var i = 0; i < 3; i++)
+        {
+            for(var j = 0; j < 3; j++)
+            {
+                if(tmp_field[i][j] == 0)
+                {
+                    tmp_field[i][j] = 1;
+                    var score = miniMax(tmp_field, false);
+
+                    if(score > bestScore)
+                    {
+                        bestScore = score;
+                    }
+                    tmp_field[i][j] = 0;
+                }
+            }
+        }
+        return bestScore;
+    }
+    else
+    {
+        bestScore = +Infinity
+        for(var i = 0; i < 3; i++)
+        {
+            for(var j = 0; j < 3; j++)
+            {
+                if(tmp_field[i][j] == 0)
+                {
+                    tmp_field[i][j] = 2;
+                    var score = miniMax(tmp_field, true);
+                    
+                    if(score < bestScore)
+                    {
+                        bestScore = score;
+                    }
+                    tmp_field[i][j] = 0;
+                }
+            }
+        }
+
+        return bestScore;
+    }
 }
 
 function getPossibleMoves(field)
@@ -136,103 +210,6 @@ function equals3(one, two, three)
     return one == two && one == three;
 }
 
-function bestMove(tmp_field)
-{
-    var difficulty = setDifficulty();
-    var bestScore = +Infinity
-    var move = {  };
-
-    for(var i = 0; i < 3; i++)
-    {
-        for(var j = 0; j < 3; j++)
-        {
-            if(tmp_field[i][j] == 0)
-            {
-                tmp_field[i][j] = 2;
-
-                var score = miniMax(tmp_field, true);
-                if(score < bestScore)
-                {
-                    bestScore = score;
-                    move = { i,j }
-                }
-                tmp_field[i][j] = 0;
-            }
-        }
-    }
-    if(difficulty < 2)
-    {
-        tmp_field[move.i][move.j] = 2;
-    }
-    else
-    {
-        var rndMove = getRandomIndex(tmp_field);
-        tmp_field[rndMove.i][rndMove.j] = 2;
-    }
-}
-
-function miniMax(tmp_field, player)
-{
-    var bestScore;
-    var game_over = validate(tmp_field);
-    
-    if(game_over != 2)
-    {
-        if(player == true && game_over != 0)
-            return -10
-        else if(game_over != 0)
-            return 10
-        else
-            return 0
-    }
-
-    if(player == true)
-    {
-        bestScore = -Infinity;
-        for(var i = 0; i < 3; i++)
-        {
-            for(var j = 0; j < 3; j++)
-            {
-                if(tmp_field[i][j] == 0)
-                {
-                    tmp_field[i][j] = 1;
-                    var score = miniMax(tmp_field, false);
-
-                    if(score > bestScore)
-                    {
-                        bestScore = score;
-                    }
-                    tmp_field[i][j] = 0;
-                }
-            }
-        }
-        return bestScore;
-    }
-    else
-    {
-        bestScore = +Infinity
-        for(var i = 0; i < 3; i++)
-        {
-            for(var j = 0; j < 3; j++)
-            {
-                if(tmp_field[i][j] == 0)
-                {
-                    tmp_field[i][j] = 2;
-                    var score = miniMax(tmp_field, true);
-                    
-                    if(score < bestScore)
-                    {
-                        bestScore = score;
-                    }
-                    tmp_field[i][j] = 0;
-                }
-            }
-        }
-
-        return bestScore;
-    }
-}
-
 function reloadPage()
 {
     window.location.reload();
@@ -244,6 +221,15 @@ function winnerAlert(field)
     {
         alert("You´ve Won!");
     }
+}
+
+function getRandomIndex(field)
+{
+    var array = getPossibleMoves(field);
+    min = 0;
+    max = array.length - 1;
+
+    return array[getRandomNumber(min, max)];
 }
 
 
