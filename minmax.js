@@ -11,6 +11,21 @@ function setDifficulty(diff)
     difficulty = diff;
 }
 
+function getButtons()
+{
+    var easy_btn = document.getElementById("visiblebutton1");
+    var hard_btn = document.getElementById("visiblebutton2");
+
+    easy_btn.style.visibility = "hidden";
+    hard_btn.style.visibility = "hidden";
+
+    var game = document.getElementsByClassName("game");
+    for(var i = 0; i < game.length; i++)
+    {
+        game[i].style.visibility = "visible";
+    }    
+}
+
 function buttonClick(e, x, y)
 {
     var player_one = true;
@@ -54,6 +69,8 @@ function bestMove(tmp_field)
     {
         var rndMove = getRandomIndex(tmp_field);
         tmp_field[rndMove.i][rndMove.j] = 2;
+        console.log(rnd);
+        console.log(difficulty);
     }
     else
     {

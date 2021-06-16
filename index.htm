@@ -17,10 +17,10 @@
         <div class="container difficulty">
             <div class="row">
                 <div>
-                    <button class="diffbtn1 diffbtn" onclick="setDifficulty(20)">Easy-Mode</button>
+                    <button class="diffbtn1 diffbtn" id="visiblebutton1" onclick="setDifficulty(45), getButtons()">Easy-Mode</button>
                 </div>
                 <div>
-                    <button class="diffbtn2 diffbtn" onclick="setDifficulty(0)">Hard-Mode</button>
+                    <button class="diffbtn2 diffbtn" id="visiblebutton2" onclick="setDifficulty(15), getButtons()">Hard-Mode</button>
                 </div>
             </div>
         </div>
@@ -39,10 +39,9 @@
                 <button class="gamebtn" onclick="buttonClick(event, 2,0)"></button>
                 <button class="gamebtn" onclick="buttonClick(event, 2,1)"></button>
                 <button class="gamebtn" onclick="buttonClick(event, 2,2)"></button>
-            </div>
-            
+            </div>            
             <div class="row">
-                <button class="reload" onclick="reloadPage()">Reload-Page</button>
+                <button class="reload" onclick="reloadPage(), getButtons()">Reload-Page</button>
             </div>
         </div>
         <script src="./minmax.js"></script>
