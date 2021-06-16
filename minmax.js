@@ -4,6 +4,10 @@ var field = [
     [0,0,0]
 ]
 
+// hide buttons as default
+// onclick() hide difficulty buttons and make playfield visible
+// create difficulty function which gives bestmove() its values for the turn
+
 function buttonClick(e, x, y)
 {
     console.log(e);
