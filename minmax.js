@@ -4,21 +4,19 @@ var field = [
     [0,0,0]
 ]
 
-// hide buttons as default
-// onclick() hide difficulty buttons and make playfield visible
-// create difficulty function which gives bestmove() its values for the turn
+function setDifficulty(e, id)
+{
+    
+}
 
 function buttonClick(e, x, y)
 {
-    console.log(e);
-    console.log(x,y);    
-
     var player_one = true;
     e.target.textContent = "X";
     e.target.disabled = true;
     field[x][y] = 1;
-    player_one = false;    
-
+    player_one = false;
+    
     bestMove(field);
     render(field);
     validate(field);
@@ -74,9 +72,6 @@ function render(tmp_field)
             b[i].disabled = true;
         }
     }
-
-    console.log(tmp_field);
-    console.log(b);
 }
 
 function validate(tmp_field)
@@ -148,11 +143,10 @@ function bestMove(tmp_field)
             }
         }
     }
-    //implement difficulty
     if(rndNum < 2)
     {
-        var rndMove = getRandomIndex(tmp_field);
-        tmp_field[rndMove.i][rndMove.j] = 2;
+    var rndMove = getRandomIndex(tmp_field);
+    tmp_field[rndMove.i][rndMove.j] = 2;
     }
     else
     {
