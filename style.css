@@ -1,25 +1,55 @@
 
-.row .color{
-    background-color: whitesmoke;
+h1{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 80px;
 }
 
-.container .row .gamebtn{
+.diffbtn1{
     visibility: visible;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    height: 100px;
+    width: 200px;
+    margin-top: -150px;
+    margin-left: -350px;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+    z-index: 1001; 
 }
 
-.container .row .gamebtn{    
+.diffbtn2{
+    visibility: visible;
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    height: 100px;
+    width: 200px;
+    margin-top: -150px;
+    margin-left: -350px;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+    z-index: 1001;
+}
+
+.gamebtn{
     height: 200px;
     width: 200px;
     font-size: 75px;
     font-style: italic;
     color: red;
+    z-index: 1000;
 }
 
-.container .row .restart{
-    visibility: visible;
+.game{
+    visibility: hidden;
 }
-.container .row .restart{
-    font-size: 50px;
+
+.reload{
+    font-size: 25px;
     height: 85px;
     width: 225px;
     margin-top: 10px;
@@ -34,14 +64,6 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -250px;
-    margin-left: -250px;
-}
-
-.difficulty .gamebtn{
-    z-index: 1000;
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    font-size: 75px;
+    margin-top: -280px;
+    margin-left: -280px;
 }

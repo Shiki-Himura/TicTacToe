@@ -13,25 +13,36 @@
 
     </head>
     <body>
+        <h1>Tic-Tac-Toe</h1>
+        <div class="container difficulty">
+            <div class="row">
+                <div>
+                    <button class="diffbtn1 diffbtn" onclick="getDifficulty(), setDifficulty(1)">Easy-Mode</button>
+                </div>
+                <div>
+                    <button class="diffbtn2 diffbtn" onclick="getDifficulty(), setDifficulty(2)">Hard-Mode</button>
+                </div>
+            </div>
+        </div>
         <div class="container game">
             <div class="row">
-                <button class="gamebtn color" onclick="buttonClick(event, 0,0)"></button>
-                <button class="gamebtn color" onclick="buttonClick(event, 0,1)"></button>
-                <button class="gamebtn color" onclick="buttonClick(event, 0,2)"></button>
+                <button class="gamebtn" onclick="buttonClick(event, 0,0)"></button>
+                <button class="gamebtn" onclick="buttonClick(event, 0,1)"></button>
+                <button class="gamebtn" onclick="buttonClick(event, 0,2)"></button>
             </div>
             <div class="row">
-                <button class="gamebtn color" onclick="buttonClick(event, 1,0)"></button>
-                <button class="gamebtn color" onclick="buttonClick(event, 1,1)"></button>
-                <button class="gamebtn color" onclick="buttonClick(event, 1,2)"></button>
+                <button class="gamebtn" onclick="buttonClick(event, 1,0)"></button>
+                <button class="gamebtn" onclick="buttonClick(event, 1,1)"></button>
+                <button class="gamebtn" onclick="buttonClick(event, 1,2)"></button>
             </div>
             <div class="row">
-                <button class="gamebtn color" onclick="buttonClick(event, 2,0)"></button>
-                <button class="gamebtn color" onclick="buttonClick(event, 2,1)"></button>
-                <button class="gamebtn color" onclick="buttonClick(event, 2,2)"></button>
+                <button class="gamebtn" onclick="buttonClick(event, 2,0)"></button>
+                <button class="gamebtn" onclick="buttonClick(event, 2,1)"></button>
+                <button class="gamebtn" onclick="buttonClick(event, 2,2)"></button>
             </div>
             
             <div class="row">
-                <button class="restart" onclick="resetApp()">Restart</button>
+                <button class="reload" onclick="reloadPage()">Reload-Page</button>
             </div>
         </div>
         <script src="./minmax.js"></script>

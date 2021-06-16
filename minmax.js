@@ -4,9 +4,26 @@ var field = [
     [0,0,0]
 ]
 
-function setDifficulty(e, id)
+function getDifficulty()
 {
-    
+    var diff = document.getElementsByClassName("diffbtn");
+    var game = document.getElementsByClassName("game");
+    for(var i = 0; i < diff.length; i++)
+    {
+        diff[i].style.visibility = "hidden";
+    }
+    for(var i = 0; i < game.length; i++)
+    {
+        game[i].style.visibility = "visible";
+    }
+}
+
+function setDifficulty(button)
+{
+    if(button == 2)
+        return getRandomNumber(0,9);
+    else
+        return getRandomNumber(0,1);
 }
 
 function buttonClick(e, x, y)
@@ -121,9 +138,9 @@ function equals3(one, two, three)
 
 function bestMove(tmp_field)
 {
+    var difficulty = setDifficulty();
     var bestScore = +Infinity
     var move = {  };
-    var rndNum = getRandomNumber(0, 9);
 
     for(var i = 0; i < 3; i++)
     {
@@ -143,14 +160,14 @@ function bestMove(tmp_field)
             }
         }
     }
-    if(rndNum < 2)
+    if(difficulty < 2)
     {
-    var rndMove = getRandomIndex(tmp_field);
-    tmp_field[rndMove.i][rndMove.j] = 2;
+        tmp_field[move.i][move.j] = 2;
     }
     else
     {
-        tmp_field[move.i][move.j] = 2;
+        var rndMove = getRandomIndex(tmp_field);
+        tmp_field[rndMove.i][rndMove.j] = 2;
     }
 }
 
@@ -216,7 +233,7 @@ function miniMax(tmp_field, player)
     }
 }
 
-function resetApp()
+function reloadPage()
 {
     window.location.reload();
 }
