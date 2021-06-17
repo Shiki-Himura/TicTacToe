@@ -20,7 +20,10 @@ h1{
     font-size: 25px;
     font-weight: bold;
     font-style: italic;
-    z-index: 1001; 
+    z-index: 1001;
+    background-color: black;
+    color: green;
+    border-style: none;
 }
 
 .diffbtn2{
@@ -35,6 +38,9 @@ h1{
     font-weight: bold;
     font-style: italic;
     z-index: 1001;
+    background-color: black;
+    color: red;
+    border-style: none;
 }
 
 .gamebtn{
@@ -42,8 +48,9 @@ h1{
     width: 200px;
     font-size: 75px;
     font-style: italic;
-    color: red;
+    color:brown;
     z-index: 1000;
+    background-color: gray;
 }
 
 .game{
@@ -56,6 +63,8 @@ h1{
     width: 225px;
     margin-top: 10px;
     color: lightgreen;
+    background-color: black;
+    border-style: none;
 }
 
 .restart:hover{
@@ -68,4 +77,8 @@ h1{
     left: 50%;
     margin-top: -280px;
     margin-left: -280px;
+}
+
+#black_background{
+    background-color: black;
 }
